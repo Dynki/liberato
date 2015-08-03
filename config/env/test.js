@@ -2,7 +2,7 @@
 
 module.exports = {
 	db: {
-		uri: 'mongodb://localhost/mean-test',
+		uri: 'mongodb://localhost/liberato-test',
 		options: {
 			user: '',
 			pass: ''
@@ -19,7 +19,7 @@ module.exports = {
 		}
 	},
 	app: {
-		title: 'MEAN.JS - Test Environment'
+		title: 'liberato - Test Environment'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',
