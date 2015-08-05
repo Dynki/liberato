@@ -1,4 +1,4 @@
-[![Liberato Logo](https://github.com/RidersOfRohan/liberato/blob/master/public/modules/core/img/appicon.png)] ## Liberato
+# Liberato
 
 Liberato is a full-stack JavaScript Substance Misuse System based upon the open-source [MEAN.js](http://meanjs.org) solution, which provides a solid starting point for [MongoDB](http://www.mongodb.org/), [Node.js](http://www.nodejs.org/), [Express](http://expressjs.com/), and [AngularJS](http://angularjs.org/) based applications. 
 
