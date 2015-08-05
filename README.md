@@ -1,4 +1,4 @@
-[![Liberato Logo](https://github.com/RidersOfRohan/liberato/blob/master/public/modules/core/img/appicon.png)](http://meanjs.org/)
+[![Liberato Logo](https://github.com/RidersOfRohan/liberato/blob/master/public/modules/core/img/appicon.png)] Liberato
 
 [![Build Status](https://travis-ci.org/meanjs/mean.svg?branch=master)](https://travis-ci.org/meanjs/mean)
 [![Dependencies Status](https://david-dm.org/meanjs/mean.svg)](https://david-dm.org/meanjs/mean)
