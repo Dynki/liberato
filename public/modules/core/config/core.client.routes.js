@@ -13,4 +13,12 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 			templateUrl: 'modules/core/views/home.client.view.html'
 		});
 	}
-]);
+]).run(['$rootScope','$location','Authentication',function($rootScope, $location, Authentication){
+	
+	$rootScope.$on('$stateChangeStart', 
+		function(event, toState, toParams, fromState, fromParams){ 
+		if (!Authentication.user && toState.name != 'signin')
+		 
+			$location.path('signin');
+		})
+}])		

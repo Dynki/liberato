@@ -1,6 +1,4 @@
-.content {
-	margin-top: 50px;
-}
+
 .undecorated-link:hover {
 	text-decoration: none;
 }
@@ -17,4 +15,29 @@
 body.ng-cloak
 {
 	display: block;
+}
+
+html, body, section {
+	height: 100%;
+}
+
+.login-background{
+	background: url('/modules/core/img/bg.jpg');
+	background-size: 100% auto; 
+}
+
+.collapseMenu {
+	min-width: 60px !important;
+	width: 60px !important;
+	-webkit-transition: width 0.5s ease-in-out;
+    -moz-transition: width 0.5s ease-in-out;
+    -o-transition: width 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out;
+}
+
+.expandMenu {
+	-webkit-transition: width 1s ease-out-in;
+    -moz-transition: width 1s ease-out-in;
+    -o-transition: width 1s ease-out-in;
+    transition: width 1s ease-out-in;
 }
