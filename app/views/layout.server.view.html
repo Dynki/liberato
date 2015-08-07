@@ -47,7 +47,7 @@
 
 <body class="ng-cloak" >
 	<section ng-show="authentication.user" layout="row" layout-fill flex data-ng-controller="HomeController">
-		<md-sidenav class="md-sidenav-left md-whiteframe-z4" md-component-id="left" md-is-locked-open="true" ng-class="{collapseMenu: collapseMenu, expandMenu: !collapseMenu}">
+		<md-sidenav class="md-sidenav-left md-whiteframe-z4 sidebar-menu" md-component-id="left" md-is-locked-open="true" ng-class="{collapseMenu: collapseMenu, expandMenu: !collapseMenu}">
 			<md-toolbar class="md-theme-indigo">
 				<div class="md-toolbar-tools">
 			        <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleSideNav()">
@@ -55,20 +55,28 @@
 			        </md-button>
 				</div>
 		    </md-toolbar>
-      		<md-content layout-padding>
+      		<md-content>
       			<div layout="column" flex>
-	      	</div>
+					<md-list>
+						<md-list-item ng-click="" data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);">
+	    					<md-icon md-svg-icon="{{item.icon}}" ></md-icon>
+	    					<p ng-class="{collapseMenuItem: collapseMenu, expandMenuItem: !collapseMenu}" data-ng-bind="item.title"></p>
+	  					</md-list-item>
+						<md-list-item ng-click="">
+	    					<md-icon md-svg-icon="lib/material-design-icons/action/svg/design/ic_settings_24px.svg" ></md-icon>
+	    					<p ng-class="{collapseMenuItem: collapseMenu, expandMenuItem: !collapseMenu}">Settings</p>
+	  					</md-list-item>
+					</md-list>
+	      		</div>
 	      </md-content>
     	</md-sidenav>
 		<div layout="column" flex>
-			
 			<md-toolbar class="md-theme-indigo">
 				<div class="md-toolbar-tools">
 			        <span flex>Liberato</span>
 					<md-menu md-offset="-25 50">
-	                    <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()">
+	                    <md-button aria-label="Settings" class="md-icon-button" ng-click="$mdOpenMenu()">
 	                        <md-icon md-menu-origin md-svg-icon="lib/material-design-icons/navigation/svg/design/ic_more_vert_24px.svg"></md-icon>
-	                        <!--<md-icon md-menu-origin md-svg-src="lib/font-awesome-svg-png/white/svg/bars.svg" style="margin-bottom: 10px;"></md-icon>-->
 	                    </md-button>
 	                    <md-menu-content width="4">
 	                        <md-menu-item>

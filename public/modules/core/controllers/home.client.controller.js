@@ -1,9 +1,10 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$mdSidenav', '$mdDialog', '$http', '$location', '$window',
-	function($scope, Authentication, $mdSidenav, $mdDialog, $http, $location, $window) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$mdSidenav', '$mdDialog', '$http', '$location', '$window', 'Menus',
+	function($scope, Authentication, $mdSidenav, $mdDialog, $http, $location, $window, Menus) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
+		$scope.menu = Menus.getMenu('topbar');
 		$scope.collapseMenu = false;
 		
 		$scope.toggleSideNav = function() {

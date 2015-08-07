@@ -26,18 +26,40 @@ html, body, section {
 	background-size: 100% auto; 
 }
 
+.sidebar-menu{
+	-webkit-transition: min-width 0.5s ease-in-out;
+    -moz-transition: min-width 0.5s ease-in-out;
+    -o-transition: min-width 0.5s ease-in-out;
+    transition: min-width 0.5s ease-in-out;
+}
+
 .collapseMenu {
 	min-width: 60px !important;
 	width: 60px !important;
+}
+
+.expandMenu {
+    min-width: 304px !important;
+    width: 304px !important;
+}
+
+.collapseMenuItem {
+	min-width: 0px !important;
+	width: 0px !important;
+	margin: 0px;
+	padding: 0px;
+    margin-right: 2px !important;
 	-webkit-transition: width 0.5s ease-in-out;
     -moz-transition: width 0.5s ease-in-out;
     -o-transition: width 0.5s ease-in-out;
     transition: width 0.5s ease-in-out;
 }
 
-.expandMenu {
-	-webkit-transition: width 1s ease-out-in;
-    -moz-transition: width 1s ease-out-in;
-    -o-transition: width 1s ease-out-in;
-    transition: width 1s ease-out-in;
+.expandMenuItem {
+	width: 216;
+	-webkit-transition: width 0.5s ease-out;
+    -moz-transition: width 0.5s ease-out;
+    -o-transition: width 0.5s ease-out;
+    transition: width 0.5s ease-out;
 }
+
