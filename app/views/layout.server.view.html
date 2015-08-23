@@ -39,98 +39,25 @@
 		<link rel="stylesheet" href="{{cssFile}}">
 	{% endfor %}
 
+	<!--Application JavaScript Files-->
+	{% for jsFile in jsFiles %}
+		<script type="text/javascript" src="{{jsFile}}"></script>
+	{% endfor %}
+
 	<!-- HTML5 Shim -->
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 </head>
 
-<body class="ng-cloak" >
-	<section ng-show="authentication.user" layout="row" layout-fill flex data-ng-controller="HomeController">
-		<md-sidenav class="md-sidenav-left md-whiteframe-z4 sidebar-menu" md-component-id="left" md-is-locked-open="true" ng-class="{collapseMenu: collapseMenu, expandMenu: !collapseMenu}">
-			<md-toolbar class="md-theme-indigo">
-				<div class="md-toolbar-tools">
-			        <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleSideNav()">
-			          <md-icon md-svg-icon="lib/material-design-icons/navigation/svg/design/ic_menu_24px.svg"></md-icon>
-			        </md-button>
-				</div>
-		    </md-toolbar>
-      		<md-content>
-      			<div layout="column" flex>
-					<md-list>
-						<md-list-item ng-click="" data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);">
-	    					<md-icon md-svg-icon="{{item.icon}}" ></md-icon>
-	    					<p ng-class="{collapseMenuItem: collapseMenu, expandMenuItem: !collapseMenu}" data-ng-bind="item.title"></p>
-	  					</md-list-item>
-						<md-list-item ng-click="">
-	    					<md-icon md-svg-icon="lib/material-design-icons/action/svg/design/ic_settings_24px.svg" ></md-icon>
-	    					<p ng-class="{collapseMenuItem: collapseMenu, expandMenuItem: !collapseMenu}">Settings</p>
-	  					</md-list-item>
-					</md-list>
-	      		</div>
-	      </md-content>
-    	</md-sidenav>
-		<div layout="column" flex>
-			<md-toolbar class="md-theme-indigo">
-				<div class="md-toolbar-tools">
-			        <span flex>Liberato</span>
-					<md-menu md-offset="-25 50">
-	                    <md-button aria-label="Settings" class="md-icon-button" ng-click="$mdOpenMenu()">
-	                        <md-icon md-menu-origin md-svg-icon="lib/material-design-icons/navigation/svg/design/ic_more_vert_24px.svg"></md-icon>
-	                    </md-button>
-	                    <md-menu-content width="4">
-	                        <md-menu-item>
-	                            <md-button ng-click="logout()">
-	                                <p>Log Out</p>
-	                                <ng-md-icon md-menu-align-target  icon="logout" style="fill:grey"></ng-md-icon>
-	                            </md-button>
-	                        </md-menu-item>
-	                    </md-menu-content>
-	                </md-menu>					
-		    	</div>
-		    </md-toolbar>
-			<md-whiteframe class="md-whiteframe-z1" layout layout-align="center center" flex>
-				{% block content %}{% endblock %}
-  			</md-whiteframe>
-		</div>
-	</section>
-	<section ng-show="!authentication.user" data-ng-controller="AuthenticationController" class="login-background" layout="row" flex>
-		<span flex></span>
-	 	<md-sidenav class="md-sidenav-right" md-component-id="right" md-is-locked-open="$mdMedia('min-width: 333px')">
-	      <md-toolbar class="md-theme-indigo">
-	        <h1 class="md-toolbar-tools">Liberato</h1>
-	      </md-toolbar>
-	      <md-content layout-padding>
-	      	<div layout="column" flex>
-				 <form name="userForm">
-					<md-input-container>
-					    <label>Username</label>
-						<input type="text" id="username" name="username" data-ng-model="credentials.username">
-				  	</md-input-container>
-					<md-input-container flex>
-						<label>Password</label>
-					  	<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password">
-					</md-input-container>
-					<div layout="column" flex>
-						<md-button class="md-raised md-primary" ng-click="signin()">Login</md-button>
-					</div>
-					</br>
-					<label ng-bind="error"></label>
-				 </form>
-	      	</div>
-	      </md-content>
-	    </md-sidenav>
-	</section>
+<body class="ng-cloak">
+	<div flex layout="column" layout-fill ng-include="'modules/core/views/header.client.view.html'"></div>
 
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
 		var user = {{ user | json | safe }};
 	</script>
 
-	<!--Application JavaScript Files-->
-	{% for jsFile in jsFiles %}
-		<script type="text/javascript" src="{{jsFile}}"></script>
-	{% endfor %}
 
 	{% if process.env.NODE_ENV === 'development' %}
 	<!--Livereload script rendered -->

@@ -43,7 +43,8 @@ module.exports = {
 	assets: {
 		lib: {
 			css: [
-				'public/lib/angular-material/angular-material.css'
+				'public/lib/angular-material/angular-material.css',
+				'public/lib/angular-material-icons/angular-material-icons.css'
 			],
 			js: [
 				'public/lib/angular/angular.js',
@@ -51,6 +52,7 @@ module.exports = {
 				'public/lib/angular-animate/angular-animate.js',
 				'public/lib/angular-aria/angular-aria.js',
 				'public/lib/angular-material/angular-material.js',
+				'public/lib/angular-material-icons/angular-material-icons.min.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 			]

@@ -36,18 +36,15 @@ html, body, section {
 .collapseMenu {
 	min-width: 60px !important;
 	width: 60px !important;
+	overflow: hidden;
 }
 
 .expandMenu {
-    min-width: 304px !important;
-    width: 304px !important;
+    min-width: 264px !important;
+    width: 264px !important;
 }
 
 .collapseMenuItem {
-	min-width: 0px !important;
-	width: 0px !important;
-	margin: 0px;
-	padding: 0px;
     margin-right: 2px !important;
 	-webkit-transition: width 0.5s ease-in-out;
     -moz-transition: width 0.5s ease-in-out;
@@ -56,10 +53,13 @@ html, body, section {
 }
 
 .expandMenuItem {
-	width: 216;
+	padding-top: 4px;
 	-webkit-transition: width 0.5s ease-out;
     -moz-transition: width 0.5s ease-out;
     -o-transition: width 0.5s ease-out;
     transition: width 0.5s ease-out;
 }
 
+.bs-sidebar-icon{
+	margin-right: 0px !important;
+}
