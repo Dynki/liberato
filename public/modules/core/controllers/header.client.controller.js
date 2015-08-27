@@ -27,5 +27,9 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 		$scope.$on('$stateChangeSuccess', function() {
 			$scope.isCollapsed = false;
 		});
+		
+		$scope.changeState = function(url){
+			$location.path(url);
+		}
 	}
 ]);

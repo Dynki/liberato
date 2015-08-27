@@ -9,21 +9,21 @@
 		    </md-toolbar>
       		<md-content ng-class="{collapseMenu: collapseMenu}">
       			<div layout="column" flex>
-					<md-list>
-						<md-list-item ng-click="" data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);">
-	    					<ng-md-icon icon="{{item.icon}}" style="fill: #757575">
-								<md-tooltip ng-show="collapseMenu">
-          							{{item.title}}
-        						</md-tooltip>
-							</ng-md-icon>
-	    					<p ng-class="{collapseMenuItem: collapseMenu, expandMenuItem: !collapseMenu}">{{item.title}}</p>
-	  					</md-list-item>
-						  
-						<!--<md-list-item ng-click="">
-	    					<ng-md-icon icon="settings" style="fill: #757575"></ng-md-icon>
-	    					<p ng-class="{collapseMenuItem: collapseMenu, expandMenuItem: !collapseMenu}">Settings</p>
-	  					</md-list-item>-->
-					</md-list>
+					  
+					<md-menu>
+						<md-menu-content>
+							<md-menu-item data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);">
+								<md-button ng-click="changeState(item.link)">
+									<ng-md-icon class="bs-sidebar-icon" icon="{{item.icon}}" style="fill: #757575">
+										<md-tooltip ng-show="collapseMenu">
+											{{item.title}}
+										</md-tooltip>
+									</ng-md-icon>
+									{{item.title}}
+								</md-button>
+							</md-menu-item>
+						</md-menu-content>
+					</md-menu>
 	      		</div>
 	      </md-content>
     	</md-sidenav>

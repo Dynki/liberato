@@ -61,5 +61,7 @@ html, body, section {
 }
 
 .bs-sidebar-icon{
-	margin-right: 0px !important;
+	margin: 0px;
+	margin-right: 25px !important;
+    padding-top: 5px !important;
 }
