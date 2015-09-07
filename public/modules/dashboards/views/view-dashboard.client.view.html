@@ -1,21 +1,57 @@
-<section data-ng-controller="DashboardsController" data-ng-init="findOne()">
-	<div class="page-header">
-		<h1 data-ng-bind="dashboard.name"></h1>
+<div layout="column" layout-padding flex data-ng-controller="DashboardsController">
+	<div layout-sm="column" layout-gt-md="row" flex>
+		<div layout-sm="row" layout-gt-sm="column" flex="70">
+			<md-whiteframe class="md-whiteframe-z2 dash-b1" layout-margin layout="column">
+				<div layout="row" flex class="dash-widgets-1">
+					<div layout="column" flex="12">
+						<div flex style="background-color: #3F51B5;" layout layout-align="center center">
+							<ng-md-icon md-menu-align-target  icon="search" size="30" style="fill:rgba(230, 230, 230, 0.98);"></ng-md-icon>
+						</div>
+						<div flex class="dash-w1" layout layout-align="center center">
+							<ng-md-icon md-menu-align-target size="30" icon="people" style="fill:grey"></ng-md-icon>
+						</div>
+					</div>
+					<div layout="column" flex="12">
+						<div flex class="dash-w1" layout layout-align="center center">
+							<ng-md-icon md-menu-align-target size="30" icon="event" style="fill:grey"></ng-md-icon>
+						</div>
+						<div flex class="dash-w1" layout layout-align="center center">
+							<ng-md-icon md-menu-align-target size="30" icon="email" style="fill:grey"></ng-md-icon>
+						</div>
+					</div>
+					<div flex="33">
+						 <div id="donut_single" style="width: 150px; height: 150px;"></div>
+					</div>
+					<div flex="12">F</div>
+					<div flex>G</div>
+				</div>
+			</md-whiteframe>
+			<md-whiteframe class="md-whiteframe-z2" flex layout-margin layout="column">
+				<div>D3</div>
+			</md-whiteframe>
+		</div>
+		<div layout-sm="row" layout-gt-sm="column" flex="30">
+			<div layout="row">
+				<md-whiteframe class="md-whiteframe-z2 dash-b2" flex layout-margin  layout="column">
+					<div>.md-whiteframe-z2</div>
+				</md-whiteframe>
+				<md-whiteframe class="md-whiteframe-z2 dash-b2" flex layout-margin  layout="column">
+					<div>.md-whiteframe-z2</div>
+				</md-whiteframe>
+			</div>			
+			<div layout="row">
+				<md-whiteframe class="md-whiteframe-z2 dash-b2" flex layout-margin  layout="column">
+					<div>.md-whiteframe-z2</div>
+				</md-whiteframe>
+				<md-whiteframe class="md-whiteframe-z2 dash-b2" flex layout-margin  layout="column">
+					<div>.md-whiteframe-z2</div>
+				</md-whiteframe>
+			</div>			
+
+
+			<md-whiteframe class="md-whiteframe-z2" flex layout-margin  layout="column">
+				<div>.md-whiteframe-z2</div>
+			</md-whiteframe>
+		</div>
 	</div>
-	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == dashboard.user._id))">
-		<a class="btn btn-primary" href="/#!/dashboards/{{dashboard._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div>
-	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="dashboard.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="dashboard.user.displayName"></span>
-		</em>
-	</small>
-</section>
+</div>

@@ -1,5 +1,5 @@
-	<section ng-show="authentication.user" layout="row" layout-fill flex data-ng-controller="HeaderController">
-		<md-sidenav class="md-sidenav-left md-whiteframe-z4 sidebar-menu" md-component-id="left" md-is-locked-open="true" ng-class="{collapseMenu: collapseMenu, expandMenu: !collapseMenu}">
+	<div class="full-height" ng-show="authentication.user" layout="row" data-ng-controller="HeaderController">
+		<md-sidenav class="md-sidenav-left md-whiteframe-z4 sidebar-menu full-height" md-component-id="left" md-is-locked-open="true" ng-class="{collapseMenu: collapseMenu, expandMenu: !collapseMenu}">
 			<md-toolbar class="md-theme-indigo">
 				<div class="md-toolbar-tools">
 			        <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleSideNav()">
@@ -27,7 +27,7 @@
 	      		</div>
 	      </md-content>
     	</md-sidenav>
-		<div layout="column" flex>
+		<div class="full-height" layout="column" flex>
 			<md-toolbar class="md-theme-indigo">
 				<div class="md-toolbar-tools">
 			        <span flex>Liberato</span>
@@ -46,12 +46,12 @@
 	                </md-menu>					
 		    	</div>
 		    </md-toolbar>
-			<md-whiteframe class="md-whiteframe-z1" layout layout-align="center center" flex>
-				<section data-ui-view></section>
+			<md-whiteframe class="md-whiteframe-z1 full-height" flex>
+				<div class="full-height" layout="column" flex data-ui-view></div>
   			</md-whiteframe>
 		</div>
-	</section>
-	<section ng-show="!authentication.user" data-ng-controller="AuthenticationController" class="login-background" layout="row" flex>
+	</div>
+	<div ng-show="!authentication.user" data-ng-controller="AuthenticationController" class="login-background" layout="row" flex>
 		<span flex></span>
 	 	<md-sidenav class="md-sidenav-right" md-component-id="right" md-is-locked-open="$mdMedia('min-width: 333px')">
 	      <md-toolbar class="md-theme-indigo">
@@ -77,4 +77,4 @@
 	      	</div>
 	      </md-content>
 	    </md-sidenav>
-	</section>
+	</div>

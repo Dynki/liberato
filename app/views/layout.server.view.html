@@ -50,14 +50,15 @@
 	<![endif]-->
 </head>
 
-<body class="ng-cloak">
-	<div flex layout="column" layout-fill ng-include="'modules/core/views/header.client.view.html'"></div>
+<body class="ng-cloak" layout="column">
+	<div class="full-height" layout="column" ng-include="'modules/core/views/header.client.view.html'"></div>
 
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
 		var user = {{ user | json | safe }};
 	</script>
 
+	<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['corechart']}]}"></script>
 
 	{% if process.env.NODE_ENV === 'development' %}
 	<!--Livereload script rendered -->

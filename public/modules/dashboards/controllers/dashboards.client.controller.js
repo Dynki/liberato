@@ -62,5 +62,28 @@ angular.module('dashboards').controller('DashboardsController', ['$scope', '$sta
 				dashboardId: $stateParams.dashboardId
 			});
 		};
+		
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['NTA Complete', 'Percentage'],
+          ['Not Complete',     20],
+          ['Complete',     80],
+        ]);
+
+        var options = {
+			title: "NTA Complete",
+          pieHole: 0.8,
+          pieSliceTextStyle: {
+            color: 'black',
+          },
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
+        chart.draw(data, options);
+      }
+	  
+	  drawChart();
 	}
 ]);

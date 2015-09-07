@@ -6,7 +6,7 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 		$scope.isCollapsed = false;
 		$scope.menu = Menus.getMenu('topbar');
 
-		$scope.collapseMenu = false;
+		$scope.collapseMenu = true;
 		
 		$scope.toggleSideNav = function() {
 			$scope.collapseMenu = !$scope.collapseMenu;
