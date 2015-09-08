@@ -47,6 +47,9 @@ module.exports = {
 				'public/lib/angular-material-icons/angular-material-icons.css'
 			],
 			js: [
+				'public/lib/jquery/dist/jquery.min.js',
+				'public/lib/d3/d3.min.js',
+				'public/lib/chart.js/chart.min.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js',
 				'public/lib/angular-animate/angular-animate.js',

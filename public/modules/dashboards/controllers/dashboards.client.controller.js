@@ -5,6 +5,12 @@ angular.module('dashboards').controller('DashboardsController', ['$scope', '$sta
 	function($scope, $stateParams, $location, Authentication, Dashboards) {
 		$scope.authentication = Authentication;
 
+    // Get context with jQuery - using jQuery's .get() method.
+    var ctx = $('#myLineChart').get(0).getContext('2d');
+
+    Chart.defaults.global.responsive = true;
+    Chart.defaults.global.maintainAspectRatio = false;
+
 		// Create new Dashboard
 		$scope.create = function() {
 			// Create new Dashboard object
@@ -63,27 +69,254 @@ angular.module('dashboards').controller('DashboardsController', ['$scope', '$sta
 			});
 		};
 		
-      function drawChart() {
+	  
+          var options = {
 
-        var data = google.visualization.arrayToDataTable([
-          ['NTA Complete', 'Percentage'],
-          ['Not Complete',     20],
-          ['Complete',     80],
-        ]);
+          ///Boolean - Whether grid lines are shown across the chart
+          scaleShowGridLines : true,
 
-        var options = {
-			title: "NTA Complete",
-          pieHole: 0.8,
-          pieSliceTextStyle: {
-            color: 'black',
-          },
-          legend: 'none'
+          //String - Colour of the grid lines
+          scaleGridLineColor : 'rgba(0,0,0,.05)',
+
+          //Number - Width of the grid lines
+          scaleGridLineWidth : 1,
+
+          //Boolean - Whether the line is curved between points
+          bezierCurve : true,
+
+          //Number - Tension of the bezier curve between points
+          bezierCurveTension : 0.4,
+
+          //Boolean - Whether to show a dot for each point
+          pointDot : true,
+
+          //Number - Radius of each point dot in pixels
+          pointDotRadius : 4,
+
+          //Number - Pixel width of point dot stroke
+          pointDotStrokeWidth : 1,
+
+          //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+          pointHitDetectionRadius : 20,
+
+          //Boolean - Whether to show a stroke for datasets
+          datasetStroke : true,
+
+          //Number - Pixel width of dataset stroke
+          datasetStrokeWidth : 2,
+
+          //Boolean - Whether to fill the dataset with a colour
+          datasetFill : true,
+
+          //String - A legend template
+          legendTemplate : '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<datasets.length; i++){%><li><span style=\'background-color:<%=datasets[i].lineColor%>\'></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
+
+      };
+
+      var ctx2 = $('#myPieChart1').get(0).getContext('2d');
+      var ctx3 = $('#myPieChart2').get(0).getContext('2d');
+
+
+        $scope.data2 = [
+            {
+                value: 80,
+                color:'#3F51B5',
+                highlight: '##3F51B5',
+                label: 'Complete'
+            },
+            {
+                value: 20,
+                color: '#46BFBD',
+                highlight: '#46BFBD',
+                label: 'Incomplete'
+            }
+        ];
+
+        $scope.data3 = [
+            {
+                value: 65,
+                color:'#3F51B5',
+                highlight: '##3F51B5',
+                label: 'Not a risk'
+            },
+            {
+                value: 35,
+                color: '#F53F32',
+                highlight: '#F53F32',
+                label: 'At Risk'
+            }
+        ];
+
+        var options2 = {
+            //Boolean - Whether we should show a stroke on each segment
+            segmentShowStroke : true,
+
+            //String - The colour of each segment stroke
+            segmentStrokeColor : '#fff',
+
+            //Number - The width of each segment stroke
+            segmentStrokeWidth : 2,
+
+            //Number - The percentage of the chart that we cut out of the middle
+            percentageInnerCutout : 50, // This is 0 for Pie charts
+
+            //Number - Amount of animation steps
+            animationSteps : 100,
+
+            //String - Animation easing effect
+            animationEasing : 'easeOutBounce',
+
+            //Boolean - Whether we animate the rotation of the Doughnut
+            animateRotate : true,
+
+            //Boolean - Whether we animate scaling the Doughnut from the centre
+            animateScale : false,
+
+            //String - A legend template
+            legendTemplate : '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<$scope.data2.length; i++){%><li><span style=\'background-color:<%=segments[i].fillColor%>\'></span><%if($scope.data2[i].label){%><%=$scope.data2[i].label%><%}%></li><%}%></ul>'
+
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
-        chart.draw(data, options);
-      }
-	  
-	  drawChart();
+        var myDoughnutChart = new Chart(ctx2).Doughnut($scope.data2,options2);
+        var myDoughnutChart2 = new Chart(ctx3).Doughnut($scope.data3,options2);
+
+//        //then you just need to generate the legend
+//        var legend = myDoughnutChart.generateLegend();
+
+//        //and append it to your page somewhere
+//        $('#myPieChart').append(legend);
+
+        $scope.getDOW = function(date, dow){
+
+            var newDate = new Date(date);
+
+            newDate.setDate(newDate.getDate() + dow);
+
+            var weekday = new Array(7);
+            weekday[0]= 'Sunday';
+            weekday[1] = 'Monday';
+            weekday[2] = 'Tuesday';
+            weekday[3] = 'Wednesday';
+            weekday[4] = 'Thursday';
+            weekday[5] = '"Friday';
+            weekday[6] = 'Saturday';
+
+            return weekday[newDate.getDay()];
+        };
+
+        var date = new Date();
+
+        var data = {
+            labels: [$scope.getDOW(date, -7),
+                $scope.getDOW(date, -6),
+                $scope.getDOW(date, -5),
+                $scope.getDOW(date, -4),
+                $scope.getDOW(date, -3),
+                $scope.getDOW(date, -2),
+                $scope.getDOW(date, -1)],
+            datasets: [
+                {
+                    label: 'New Clients',
+                    fillColor: 'rgba(151,187,205,0.2)',
+                    strokeColor: 'rgba(151,187,205,1)',
+                    pointColor: 'rgba(151,187,205,1)',
+                    pointStrokeColor: '#fff',
+                    pointHighlightFill: '#fff',
+                    pointHighlightStroke: 'rgba(151,187,205,1)',
+                    data: [28, 36, 44, 48, 66, 88, 90]
+                }
+            ]
+        };
+
+
+
+        var myLineChart = new Chart(ctx).Line(data, options);
+
+        // Create new Dashboard
+		$scope.create = function() {
+			// Create new Dashboard object
+			var dashboard = new Dashboards ({
+				name: this.name
+			});
+
+			// Redirect after save
+			dashboard.$save(function(response) {
+				$location.path('dashboards/' + response._id);
+
+				// Clear form fields
+				$scope.name = '';
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+        
+        var dataBar = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+                {
+                    label: "Male",
+                    fillColor: "#3F51B5",
+                    strokeColor: "#3F51B5",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                },
+                {
+                    label: "Female",
+                    fillColor: "#FE9700",
+                    strokeColor: "#FE9700",
+                    highlightFill: "rgba(151,187,205,0.75)",
+                    highlightStroke: "rgba(151,187,205,1)",
+                    data: [28, 48, 40, 19, 86, 27, 90]
+                }
+            ]
+        };    
+        
+        var optionsBar = {
+                //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+                scaleBeginAtZero : true,
+            
+                //Boolean - Whether grid lines are shown across the chart
+                scaleShowGridLines : false,
+            
+                //String - Colour of the grid lines
+                scaleGridLineColor : "rgba(0,0,0,.05)",
+            
+                //Number - Width of the grid lines
+                scaleGridLineWidth : 1,
+            
+                //Boolean - Whether to show horizontal lines (except X axis)
+                scaleShowHorizontalLines: true,
+            
+                //Boolean - Whether to show vertical lines (except Y axis)
+                scaleShowVerticalLines: true,
+            
+                //Boolean - If there is a stroke on each bar
+                barShowStroke : true,
+            
+                //Number - Pixel width of the bar stroke
+                barStrokeWidth : 2,
+            
+                //Number - Spacing between each of the X value sets
+                barValueSpacing : 5,
+            
+                //Number - Spacing between data sets within X values
+                barDatasetSpacing : 1,
+            
+                //String - A legend template
+                legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+            
+            }    
+            
+        // Get context with jQuery - using jQuery's .get() method.
+        var ctxBar = $('#BarChart1').get(0).getContext('2d');
+    
+    
+    
+     var myBarChart = new Chart(ctxBar).Bar(dataBar, optionsBar);
+        
+
 	}
+	
+	
 ]);
