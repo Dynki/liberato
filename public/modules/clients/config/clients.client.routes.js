@@ -7,7 +7,7 @@ angular.module('clients').config(['$stateProvider',
 		$stateProvider.
 		state('listClients', {
 			url: '/clients',
-			templateUrl: 'modules/clients/views/list-clients.client.view.html'
+			templateUrl: 'modules/clients/views/list-clients.client.view.html',
 		}).
 		state('createClient', {
 			url: '/clients/create',

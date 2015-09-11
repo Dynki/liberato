@@ -46,12 +46,12 @@
 	                </md-menu>					
 		    	</div>
 		    </md-toolbar>
-			<md-whiteframe class="md-whiteframe-z1 full-height" flex>
+			<div class="full-height" flex>
 				<div class="full-height" layout="column" flex data-ui-view></div>
-  			</md-whiteframe>
+  			</div>
 		</div>
 	</div>
-	<div ng-show="!authentication.user" data-ng-controller="AuthenticationController" class="login-background" layout="row" flex>
+	<div ng-show="!authentication.user" data-ng-controller="AuthenticationController" ng-class="'login-background-'+randomImageIndex" layout="row" flex>
 		<span flex></span>
 	 	<md-sidenav class="md-sidenav-right" md-component-id="right" md-is-locked-open="$mdMedia('min-width: 333px')">
 	      <md-toolbar class="md-theme-indigo">

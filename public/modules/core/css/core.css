@@ -21,10 +21,37 @@ html, body, section {
 	height: 100%;
 }
 
-.login-background{
-	background: url('/modules/core/img/bg.jpg');
-	background-size: 100% auto; 
+.login-background-1{
+	background: url('/modules/core/img/bg1.jpg');
+	background-size: cover;
+	background-repeat: no-repeat; 
 }
+
+.login-background-2{
+	background: url('/modules/core/img/bg2.jpg');
+	background-size: cover;
+	background-repeat: no-repeat; 
+}
+
+.login-background-3{
+	background: url('/modules/core/img/bg3.jpg');
+	background-size: cover;
+	background-repeat: no-repeat; 
+}
+
+.login-background-4{
+	background: url('/modules/core/img/bg4.jpg');
+	background-size: cover;
+	background-repeat: no-repeat; 
+}
+
+.login-background-5{
+	background: url('/modules/core/img/bg5.jpg');
+	background-size: cover;
+	background-repeat: no-repeat; 
+}
+
+
 
 .sidebar-menu{
 	-webkit-transition: all 0.5s ease-in-out;
@@ -95,3 +122,35 @@ html, body { height: 100% !important; width: 100%; margin: 0; }
 	cursor: pointer;
 }
 
+.avatar{
+	width: 40px;
+    height: 40px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 16px;
+    border-radius: 50%;
+    box-sizing: content-box;
+}
+
+.md-list-item-text, md-list-item.md-3-line > .md-no-style .md-list-item-text {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 3px 0 !important;
+    text-overflow: ellipsis;
+}
+
+.client-save-btn{
+    position: absolute;
+    top: 48px;
+	right: 50px;
+}
+
+.client-save-icon{
+	margin-bottom: 10px;
+    margin-left: 8px
+}
+
+.no-padding{
+	padding: 0px !important;
+}

@@ -3,7 +3,10 @@
 angular.module('users').controller('AuthenticationController', ['$scope', '$http', '$location', 'Authentication', '$mdToast', '$mdSidenav',
 	function($scope, $http, $location, Authentication, $mdToast, $mdSidenav) {
 		$scope.authentication = Authentication;
-			
+	
+		var items = ["1","2","3","4","5"];
+		$scope.randomImageIndex = items[Math.floor(Math.random()*items.length)];
+		
 		// If user is signed in then redirect back home
 		if ($scope.authentication.user) $location.path('/');
 
