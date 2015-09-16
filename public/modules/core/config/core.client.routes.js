@@ -18,7 +18,6 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 	$rootScope.$on('$stateChangeStart', 
 		function(event, toState, toParams, fromState, fromParams){ 
 		if (!Authentication.user && toState.name != 'signin')
-		 
 			$location.path('signin');
 		})
 }])		

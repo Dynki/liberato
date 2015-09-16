@@ -19,18 +19,37 @@
             <div layout layout-align="start start" flex>
                 <md-tabs md-dynamic-height md-border-bottom flex>
                     <md-tab label="Client Details" flex>
+                        <div 
                         <div layout="column" layout-gt-md="row" flex>
-                            <md-input-container>
+                            <md-input-container layout-margin>
                                 <label>Title</label>
                                 <input ng-model="client.title">
                             </md-input-container>
-                            <md-input-container>
+                            <md-input-container layout-margin>
                                 <label>Firstname</label>
                                 <input ng-model="client.firstname">
                             </md-input-container>
-                            <md-input-container flex>
+                            <md-input-container layout-margin flex>
                                 <label>Surname</label>
                                 <input ng-model="client.surname">
+                            </md-input-container>
+                        </div>
+                        <div layout="row" layout-align="start start" layout-margin>
+                            <h4>Date of Birth</h4>
+                            <md-datepicker flex ng-model="client.dob" md-placeholder="D.O.B."></md-datepicker>
+                        </div>
+                        <div layout="row">
+                            <md-input-container layout-margin>
+                                <label>Gender at Birth</label>
+                                <md-select ng-model="client.genderAtBirth">
+                                    <md-option ng-repeat="gen in gender" value="{{gen.text}}">{{gen.text}}</md-option>
+                                </md-select>
+                            </md-input-container>
+                            <md-input-container layout-margin>
+                                <label>Gender Now</label>
+                                <md-select ng-model="client.genderNow">
+                                    <md-option ng-repeat="gen in gender" value="{{gen.text}}">{{gen.text}}</md-option>
+                                </md-select>
                             </md-input-container>
                         </div>
                     </md-tab>

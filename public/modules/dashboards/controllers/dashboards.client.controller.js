@@ -1,9 +1,75 @@
 'use strict';
 
 // Dashboards controller
-angular.module('dashboards').controller('DashboardsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Dashboards',
-	function($scope, $stateParams, $location, Authentication, Dashboards) {
+angular.module('dashboards').controller('DashboardsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Dashboards', '$timeout', '$q',
+	function($scope, $stateParams, $location, Authentication, Dashboards, $timeout, $q) {
 		$scope.authentication = Authentication;
+
+        $scope.selected = [];
+        
+        $scope.recentList = [
+            {icon: "insert_drive_file", iconfill:'fill: #0F9D58', color: "grey", type: "TOP", name:"Ron Hampton"},
+            {icon: "event", iconfill: "fill: #FE5890", type: "Event", name:"Ron Hampton"},
+            {icon: "insert_drive_file", iconfill:'fill: #0F9D58', color: "grey", type: "TOP", name:"Dean Galloway"},
+            {icon: "insert_drive_file", iconfill:'fill: #0F9D58', color: "grey", type: "TOP", name:"Suzanne Bones"},
+            {icon: "event", iconfill: "fill: #FE5890", type: "Event", name:"Suzanne Bones"},
+            {icon: "contacts", iconfill: "fill: #4D5BB3", type: "Demographic", name:"Ron Hampton"},
+            {icon: "event", iconfill: "fill: #FE5890", type: "Event", name:"Suzanne Bones"},
+            {icon: "event", iconfill: "fill: #FE5890", type: "Event", name:"Suzanne Bones"},
+            {icon: "event", iconfill: "fill: #FE5890", type: "Event", name:"Kaitlin Figg"},
+            {icon: "insert_drive_file", iconfill:'fill: #0F9D58', color: "grey", type: "TOP", name:"Kaitlin Figg"},
+        ]             
+        
+ 
+        $scope.topsTotal = [{ clientRef: "10023", name: "Lucius Hobworth", dueDate: "25/09/2015"},
+            { clientRef: "10023", name: "Lucius Hobworth", dueDate: "26/09/2015"},
+            { clientRef: "13244", name: "Malfalda Yorick", dueDate: "30/09/2015"},
+            { clientRef: "13434", name: "Finneas Traybayer", dueDate: "30/09/2015"},
+            { clientRef: "12344", name: "Fred Bellamy", dueDate: "01/10/2015"},
+            { clientRef: "16787", name: "George Butterworth", dueDate: "01/10/2015"},
+            { clientRef: "17654", name: "Pansy Trotter", dueDate: "01/10/2015"},
+            { clientRef: "17434", name: "Lavender Smith", dueDate: "01/10/2015"},
+            { clientRef: "17884", name: "Florian Hammer", dueDate: "01/10/2015"},
+            { clientRef: "10023", name: "Lucius Hobworth", dueDate: "26/09/2015"},
+            { clientRef: "13244", name: "Malfalda Yorick", dueDate: "30/09/2015"},
+            { clientRef: "13434", name: "Finneas Traybayer", dueDate: "30/09/2015"},
+            { clientRef: "12344", name: "Fred Bellamy", dueDate: "01/10/2015"},
+            { clientRef: "16787", name: "George Butterworth", dueDate: "01/10/2015"},
+            { clientRef: "17654", name: "Pansy Trotter", dueDate: "01/10/2015"},
+            { clientRef: "17434", name: "Lavender Smith", dueDate: "01/10/2015"},
+            { clientRef: "17884", name: "Florian Hammer", dueDate: "01/10/2015"},
+        ]
+        
+        
+
+        $scope.query = {
+            filter: '',
+            order: 'name',
+            limit: 15,
+            page: 1
+        };
+
+        $scope.onChange = function () {
+            var deferred = $q.defer();
+            var returnVal = [];
+            
+            $timeout(function(){
+            
+                if ($scope.query.page == 1) {
+                    returnVal = $scope.topsTotal.slice(0, $scope.query.limit);
+                } else {
+                    returnVal = $scope.topsTotal.slice($scope.query.limit * ($scope.query.page-1), ($scope.query.limit * ($scope.query.page-1)) + $scope.query.limit)
+                }
+                
+                $scope.tops = returnVal;
+                deferred.resolve(returnVal);
+                
+            },200)
+
+            return {$promise: deferred.promise};
+        };
+        
+        $scope.onChange(1,5);
 
         $scope.allContacts = [{name: 'Teveor Longbottom', email: 'trev@grimauld.com'}];
 

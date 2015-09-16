@@ -44,7 +44,8 @@ module.exports = {
 		lib: {
 			css: [
 				'public/lib/angular-material/angular-material.css',
-				'public/lib/angular-material-icons/angular-material-icons.css'
+				'public/lib/angular-material-icons/angular-material-icons.css',
+				'public/lib/angular-material-data-table/dist/md-data-table.min.css',
 			],
 			js: [
 				'public/lib/jquery/dist/jquery.min.js',
@@ -56,6 +57,7 @@ module.exports = {
 				'public/lib/angular-aria/angular-aria.js',
 				'public/lib/angular-material/angular-material.js',
 				'public/lib/angular-material-icons/angular-material-icons.min.js',
+				'public/lib/angular-material-data-table/dist/md-data-table.min.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 			]

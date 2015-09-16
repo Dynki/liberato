@@ -5,6 +5,11 @@ angular.module('clients').controller('ClientsController', ['$scope', '$statePara
 	function($scope, $stateParams, $location, Authentication, Clients) {
 		$scope.authentication = Authentication;
 
+		$scope.gender = [{id:'Male', text: 'Male'},
+						{id: 'Female', text: 'Female'},
+						{id: 'Not Known', text: 'Not Known'},
+						{id: 'Not Specified', text: 'Not Specified'}];	
+
 		// Create new Client
 		$scope.create = function() {
 			// Create new Client object

@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'liberato';
-	var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ngAria', 'ngMaterial', 'ui.router', 'ui.utils', 'ngMdIcons'];
+	var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ngAria', 'ngMaterial', 'ui.router', 'ui.utils', 'ngMdIcons', 'md.data.table'];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {

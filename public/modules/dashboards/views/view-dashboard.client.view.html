@@ -44,7 +44,31 @@
 					</div>
 				</div>
 			</md-whiteframe>
-			<md-whiteframe class="md-whiteframe-z2" flex layout-margin layout="column">
+			<md-whiteframe class="md-whiteframe-z2" layout-margin layout="column">
+				<md-data-table-toolbar>
+					<h2 class="md-title">TOPs Due</h2>
+				</md-data-table-toolbar>
+
+				<md-data-table-container>
+				<table md-data-table md-row-select="selected" md-progress="deferred">
+					<thead  md-order="query.order" md-trigger="onOrderChange">
+					<tr>
+						<th name="Client Ref"></th>
+						<th name="Name"></th>
+						<th numeric name="Due Date"></th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr md-auto-select ng-repeat="top in tops">
+						<td>{{top.clientRef}}</td>
+						<td>{{top.name}}</td>
+						<td>{{top.dueDate}}</td>
+					</tr>
+					</tbody>
+				</table>
+				</md-data-table-container>
+				<md-data-table-pagination md-limit="query.limit" md-page="query.page" md-row-select="[15]" md-total="{{topsTotal.length}}" md-trigger="onChange"></md-data-table-pagination>
+
 			</md-whiteframe>
 		</div>
 		<div layout-sm="row" layout-gt-sm="column" flex="30">
@@ -81,35 +105,21 @@
 					<md-toolbar layout-padding>
 						Recent Activity
 					</md-toolbar>
-					<md-list layout="column">
-						<md-list-item class="md-3-line" layout="row">
-							<div class="md-list-item-text" layout="row" layout-align="start center">
-								<img ng-src="modules/dashboards/img/60.jpeg" class="avatar"/>
-								<h3>Nichollas Greyback</h3>
-							</div>
-						</md-list-item>
-						<md-list-item class="md-3-line" layout="row">
-							<div class="md-list-item-text" layout="row" layout-align="start center">
-								<img ng-src="modules/dashboards/img/60.jpeg" class="avatar"/>
-								<h3>Remus Flamel</h3>
-							</div>
-						</md-list-item>
-						<md-list-item class="md-3-line" layout="row">
-							<div class="md-list-item-text" layout="row" layout-align="start center">
-								<img ng-src="modules/dashboards/img/60.jpeg" class="avatar"/>
-								<h3>Jason Finch-fletchly</h3>
-							</div>
-						</md-list-item>
-					</md-list>
+					<md-content>
+						<md-list layout="column">
+							<md-list-item class="md-3-line" layout="row" ng-repeat="recent in recentList">
+								<div class="md-list-item-text" layout="row" layout-align="start center">
+									<ng-md-icon md-menu-align-target size="30" class="bs-sidebar-icon" icon="{{recent.icon}}" style="{{recent.iconfill}}">
+									</ng-md-icon>
+									<div layout style="margin-top:10px;">
+										<h3>{{recent.type}} - {{recent.name}}</h3>
+									</div>
+								</div>
+							</md-list-item>
+						</md-list>
+					</md-content>
 				</md-whiteframe>
 			</div>				
-			<!-- Line chart -->
-			<md-whiteframe class="md-whiteframe-z2" flex layout-margin  layout="column">
-				<div flex layout-align="center center" layout-margin layout-padding>
-					
-				</div>
-			</md-whiteframe>
-			
 		</div>
 	</div>
 </div>
